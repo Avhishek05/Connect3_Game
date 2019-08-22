@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     String winner;
     boolean gameActive=true;
     public void dropIn(View view) {
+        boolean ht = true;
         ImageView counter = (ImageView) view;
         int tappedCounter = Integer.parseInt(counter.getTag().toString());
         if (gameState[tappedCounter] == 2  && gameActive) {
@@ -47,6 +48,19 @@ public class MainActivity extends AppCompatActivity {
                     playAgainButton.setVisibility(view.VISIBLE);
                     winnerTextView.setVisibility(view.VISIBLE);
 //                    Toast.makeText(this, winner + " won", Toast.LENGTH_SHORT).show();
+                }
+                for(int i=0;i<8;i++){
+                    if (gameState[i]==2){
+                        ht=false;
+                    }
+                }
+                if (ht && gameActive){
+                    Button playAgainButton = findViewById(R.id.playAgainButton);
+                    TextView winnerTextView = findViewById(R.id.winnerTextView);
+                    winnerTextView.setText("DRAW");
+                    playAgainButton.setVisibility(view.VISIBLE);
+                    winnerTextView.setVisibility(view.VISIBLE);
+
                 }
             }
         }
